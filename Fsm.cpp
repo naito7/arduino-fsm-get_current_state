@@ -16,10 +16,11 @@
 #include "Fsm.h"
 
 
-State::State(void (*on_enter)(), void (*on_state)(), void (*on_exit)())
+State::State(const char* name, void (*on_enter)(), void (*on_state)(), void (*on_exit)())
 : on_enter(on_enter),
   on_state(on_state),
-  on_exit(on_exit)
+  on_exit(on_exit),
+  m_name(name)
 {
 }
 
@@ -171,4 +172,11 @@ void Fsm::make_transition(Transition* transition)
       ttransition->start = now;
   }
 
+}
+
+const char* Fsm::get_current_state_name()
+{
+  if (m_current_state == nullptr)
+    return nullptr;
+  return m_current_state->m_name;
 }
