@@ -51,7 +51,7 @@ public:
   void trigger(int event);
   void run_machine();
   
-  // may be returns null. (when current state is null)
+  // 現在のステートがあればそれの名前を返す。may be returns null. (when current state is null)
   const char* get_current_state_name();
 private:
   struct Transition
